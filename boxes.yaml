@@ -1,0 +1,16 @@
+boxes:
+    libc2.23:
+        tag: "2.23"
+        image: ubuntu:xenial
+    libc2.24:
+        tag: "2.24"
+        image: ubuntu:jessie
+    libc2.27:
+        tag: "2.27"
+        image: ubuntu:bionic
+    libc2.28:
+        tag: "2.28"
+        image: debian:buster
+    libc2.29:
+        tag: "2.29"
+        image: ubuntu:disco
