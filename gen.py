@@ -6,6 +6,7 @@ BOXES = 'boxes.yaml'
 CONFIG = 'config.yaml'
 BASE = 'Dockerfile'
 SCRIPT = 'setup.sh'
+INSTALL = 'install.sh'
 BUILD = 'build.sh'
 PUSH = 'push.sh'
 PATH = './boxes'
@@ -13,10 +14,13 @@ PATH = './boxes'
 with open(CONFIG, 'r') as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
 
+with open(INSTALL, 'r') as f:
+    install_sh = f.read()
+
 ID = config['docker']['id']
 REPO = config['docker']['repo']
 
-AUTOGEN_SETUP =\
+AUTOGEN_SCRIPT =\
 """#!/bin/sh\n
 # This file is generated automatically.
 """
@@ -30,6 +34,7 @@ def main():
     for box_name, box in yml['boxes'].items():
         dir_p = os.path.join(PATH, box_name)
         setup = os.path.join(dir_p, SCRIPT)
+        install = os.path.join(dir_p, INSTALL)
         build = os.path.join(dir_p, BUILD)
         push = os.path.join(dir_p, PUSH)
         dockerfile = os.path.join(dir_p, 'Dockerfile')
@@ -37,7 +42,10 @@ def main():
             os.mkdir(dir_p)
         if not os.path.exists(setup):
             with open(setup, 'w') as f:
-                f.write(AUTOGEN_SETUP)
+                f.write(AUTOGEN_SCRIPT)
+        if not os.path.exists(install):
+            with open(install, 'w') as f:
+                f.write(install_sh)
 
         with open(dockerfile, 'w') as f:
             f.write(f"FROM {box['image']}\n")
