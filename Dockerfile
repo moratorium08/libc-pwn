@@ -18,6 +18,6 @@ RUN apt-get update && apt-get upgrade &&\
     cd ~/ &&\
     git clone https://github.com/scwuaptx/Pwngdb.git &&\
     cp ~/Pwngdb/.gdbinit ~/ &&\
-    /setup.sh
+    sh /setup.sh
 
 CMD ["/bin/bash"]
