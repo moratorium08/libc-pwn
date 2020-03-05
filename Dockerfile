@@ -3,5 +3,6 @@ FROM ubuntu:bionic
 
 COPY ./setup.sh /setup.sh
 COPY ./install.sh /install.sh
-RUN sh /install.sh && sh /setup.sh
+COPY ./preinstall.sh /preinstall.sh
+RUN sh /preinstall.sh && sh /install.sh && sh /setup.sh
 CMD ["/bin/bash"]

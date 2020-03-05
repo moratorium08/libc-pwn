@@ -6,6 +6,7 @@ BOXES = 'boxes.yaml'
 CONFIG = 'config.yaml'
 BASE = 'Dockerfile'
 SCRIPT = 'setup.sh'
+PREINSTALL = 'preinstall.sh'
 INSTALL = 'install.sh'
 BUILD = 'build.sh'
 PUSH = 'push.sh'
@@ -34,6 +35,7 @@ def main():
     for box_name, box in yml['boxes'].items():
         dir_p = os.path.join(PATH, box_name)
         setup = os.path.join(dir_p, SCRIPT)
+        preinstall = os.path.join(dir_p, PREINSTALL)
         install = os.path.join(dir_p, INSTALL)
         build = os.path.join(dir_p, BUILD)
         push = os.path.join(dir_p, PUSH)
@@ -42,6 +44,9 @@ def main():
             os.mkdir(dir_p)
         if not os.path.exists(setup):
             with open(setup, 'w') as f:
+                f.write(AUTOGEN_SCRIPT)
+        if not os.path.exists(preinstall):
+            with open(preinstall, 'w') as f:
                 f.write(AUTOGEN_SCRIPT)
         if not os.path.exists(install):
             with open(install, 'w') as f:
