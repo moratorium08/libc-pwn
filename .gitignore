@@ -3,3 +3,4 @@ boxes/libc*
 
 !boxes/libc2.24
 !boxes/libc2.26
+!boxes/libc2.28
