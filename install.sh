@@ -23,7 +23,7 @@ apt-get -y install \
     ruby \
     ruby-dev
 
-gem install one_gadget seccomp-tools
+gem install one_gadget
 
 rm -rf /var/lib/gems/2.*/cache/*
 rm -rf /var/lib/apt/list/*
