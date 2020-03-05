@@ -1,7 +1,7 @@
 set -eu
 
 dpkg --add-architecture i386
-apt-get update && apt-get upgrade
+apt-get -y update && apt-get -y upgrade
 apt-get -y install \
     python2.7 \
     python-pip \
