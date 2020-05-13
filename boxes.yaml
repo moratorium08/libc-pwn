@@ -20,6 +20,6 @@ boxes:
     libc2.30:
         tag: "2.30"
         image: ubuntu:eoan
-#    libc2.31:
-#        tag: "2.31"
-#        image: ubuntu:focal
+    libc2.31:
+        tag: "2.31"
+        image: ubuntu:focal
