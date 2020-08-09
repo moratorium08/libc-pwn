@@ -23,3 +23,6 @@ boxes:
     libc2.31:
         tag: "2.31"
         image: ubuntu:focal
+    libc2.32:
+        tag: "2.32"
+        image: ubuntu:groovy
