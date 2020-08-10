@@ -15,6 +15,8 @@ $ gdb -p `pgrep xxxx`
 
 Supported libc versions
 
+* 2.32
+* 2.31
 * 2.30
 * 2.29
 * 2.28
