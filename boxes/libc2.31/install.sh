@@ -2,11 +2,11 @@ set -eu
 
 dpkg --add-architecture i386
 apt-get -y update && apt-get -y upgrade
-apt-get -y install \
+DEBIAN_FRONTEND="noninteractive" apt-get -y install \
     build-essential \
-    python\
+    python3\
     python3-pip \
-    python-dev \
+    python3-dev \
     git \
     libssl-dev \
     libffi-dev \
