@@ -1,32 +1,11 @@
 version: 2
 jobs:
-  generate:
-    docker:
-      - image: python:3.7
-    steps:
-      - checkout
-      - run:
-          name: Load config
-          command: echo $CONFIG | base64 -d > config.yaml
-      - run:
-          name: Install
-          command: pip install -r requirements.txt
-      - run:
-          name: Generate
-          command: ./gen.sh
-      - persist_to_workspace:
-          root: boxes/
-          paths:
-            - ./*
-
   build:
     docker:
       - image: docker:19.03
     steps:
       - checkout
       - setup_remote_docker
-      - attach_workspace:
-          at: /root/project/boxes
       - run:
           name: Login
           command: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
@@ -40,13 +19,7 @@ workflows:
   version: 2
   generate_and_build:
     jobs:
-      - generate:
-          filters:
-            branches:
-              only: master
       - build:
-          requires:
-            - generate
           filters:
             branches:
               only: master
